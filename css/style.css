@@ -1,0 +1,473 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+:root {
+    --primary: #00c1ec;
+    --secondary: #0F4C75;
+    --dark: #1B262C;
+} 
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--dark);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+}
+
+/* :target {
+    padding-top: 100px;
+    margin-top: -70px;
+} */
+
+body {
+    height: 100vh;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--dark);
+    /* box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+                0 2px 2px hsl(0deg 0% 0% / 0.075),
+                0 4px 4px hsl(0deg 0% 0% / 0.075),
+                0 8px 8px hsl(0deg 0% 0% / 0.075),
+                0 16px 16px hsl(0deg 0% 0% / 0.075) !important; */
+}
+
+a {
+    color: white;
+}
+
+/* reusable */
+.text-primary {
+    color: var(--primary) !important;
+}
+
+.active {
+    color: var(--primary) !important;
+    font-weight: 600;
+}
+
+.stroked-text {
+    -webkit-text-stroke-width: 2px;
+    color: transparent;
+}
+
+.stroked-primary {
+    -webkit-text-stroke-color: var(--primary);
+}
+
+.stroked-light {
+    -webkit-text-stroke-color: white;
+}
+
+.overlay {
+    object-fit: cover;
+    position: fixed; /* Sit on top of the page content */ /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.back-top-show {
+    opacity: 1 !important;
+}
+
+
+.back-top {
+    opacity: 0;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+    background-image: linear-gradient(to right, #2980B9, #6DD5FA);
+    border-radius: 100%;
+    display: grid;
+    place-content: center;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+                0 2px 2px hsl(0deg 0% 0% / 0.075),
+                0 4px 4px hsl(0deg 0% 0% / 0.075),
+                0 8px 8px hsl(0deg 0% 0% / 0.075),
+                0 16px 16px hsl(0deg 0% 0% / 0.075) !important;
+    z-index: 99;
+    transition-property: all;
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+}
+
+.back-top:active {
+    transform: scale(0.9);
+}
+
+.back-top i {
+    font-size: 2rem;
+}
+
+.things-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.home-content {
+    height: inherit;
+
+    line-height: 70px;
+    background-color: var(--dark);
+    background-image: url("../images/overlay.svg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.home-content p {
+    font-weight: 300;
+}
+
+.home-content .main-text {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.home-content .text-1 {
+    position: relative;
+    right: 0;
+    transition: 0.3s right;
+}
+
+.home-content .text-2 {
+    position: relative;
+    left: 0;
+    transition: 0.3s left;
+}
+
+.home-content .name-container {
+    cursor: pointer;
+    transition: 0.3s all;
+}
+
+.home-content .name-container:hover > .text-1 {
+    right: 50px;
+}
+
+.home-content .name-container:hover > .text-2 {
+    left: 50px;
+}
+
+.skills {
+    /* background-color: #1a232b; */
+    padding: 7rem 0 7rem 0 !important;
+    background-color: var(--secondary);
+    z-index: 2;
+}
+
+.card {
+    height: 200px;
+    max-width: 200px;
+
+    display: flex;
+    place-content: center;
+    cursor: pointer;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+                0 2px 2px hsl(0deg 0% 0% / 0.075),
+                0 4px 4px hsl(0deg 0% 0% / 0.075),
+                0 8px 8px hsl(0deg 0% 0% / 0.075),
+                0 16px 16px hsl(0deg 0% 0% / 0.075);
+    border: none;
+    background-color: var(--dark);
+    color: white;
+
+    transition: 0.1s background-color;
+}
+
+.card:hover {
+    background-color: var(--primary);
+}
+
+.projects {
+    padding: 7rem 0 7rem 0 !important;
+    background-color: var(--dark);
+    background-image: url("../images/overlay.svg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.projects .project-container {
+    padding-inline: 20rem;
+}
+
+.project-left {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
+
+.project-right {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(100%);
+    transition: all 1s;
+}
+
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+.window {
+    height: 340px !important;
+    max-width: 400px;
+    min-width: 300px;
+    overflow: hidden;
+    /* border: 2px solid; */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+                0 2px 2px hsl(0deg 0% 0% / 0.075),
+                0 4px 4px hsl(0deg 0% 0% / 0.075),
+                0 8px 8px hsl(0deg 0% 0% / 0.075),
+                0 16px 16px hsl(0deg 0% 0% / 0.075);
+}
+
+.window-top {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.5rem;
+    background-color: var(--secondary);
+}
+
+.window-top div {
+    /* border: 1px solid; */
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    /* z-index: 99; */
+}
+
+.window-top div:first-child {
+    background-color: #FF8F8F;
+}
+
+.window-top div:nth-child(2) {
+    background-color: #EEF296;
+}
+
+.window-top div:last-child {
+    background-color: #9ADE7B;
+}
+
+
+.window-body {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.window-body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s transform;
+}
+
+.window-body:hover img {
+    transform: scale(1.05);
+}
+
+.close-container {
+    padding-top: 4rem;
+}
+
+.about {
+    background-color: var(--dark);
+}
+
+.profile-container .profile-img-container {
+    z-index: 2;
+    position: relative;
+}
+
+.profile-container .bg-box {
+    width: 400px;
+    height: 400px;
+    background-image: linear-gradient(to right, #2980B9, #6DD5FA, #FFFFFF);
+    border-radius: 59% 41% 61% 39% / 40% 59% 41% 60%;
+    z-index: -1;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: changeShape 5s ease-in-out infinite;
+    transition: border-radius 1s ease-in-out;
+}
+
+@keyframes changeShape {
+    0%, 100% {
+        border-radius: 59% 41% 61% 39% / 40% 59% 41% 60%;
+    }
+    50% {
+        border-radius: 34% 66% 36% 64% / 42% 52% 48% 58%;
+    }
+}
+
+.introduction-text {
+    font-family: 'Poppins', sans-serif;
+}
+
+.proverbs {
+    height: 100vh;
+    background-color: var(--dark);
+    color: white;
+
+    background-color: var(--dark);
+    background-image: url("../images/overlay.svg");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.proverbs .container {
+    max-width: 40%;
+}
+
+
+.proverbs .proverb-text {
+    font-size: 2rem;
+}
+
+.author {
+    font-size: 1rem;
+    color: rgb(153, 153, 153);
+}
+
+.contacts {
+    background-color: var(--dark) !important;
+}
+
+.contact-link  {
+    background-color: rgb(172, 172, 172);
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s background-color;
+}
+
+.contact-link:first-child:hover {
+    background-color: var(--secondary);
+}
+
+.contact-link:nth-child(2):hover {
+    background-color: var(--dark);
+}
+
+.contact-link i {
+    font-size: 3rem;
+}
+
+.copyText {
+    opacity: 0;
+    position: fixed;
+    left: 50%;
+    bottom: 7%;
+    background-color: var(--secondary);
+    /* border: 1px solid rgb(95, 95, 95); */
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    transform: translateX(-50%);
+    transition: 0.3s opacity ease-out;
+}
+
+
+/* mobile size */
+@media (max-width: 576px) {
+    nav a {
+        font-size: 0.8rem;
+    }
+
+    .home-content {
+        line-height: 40px;
+    }
+
+    .home-content .main-text {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    .home-content .welcome-text {
+        font-size: 0.6rem;
+    }
+
+    .profile-container {
+        border-bottom: 1px solid white;
+    }
+
+    .proverbs .container {
+        max-width: 100% !important;
+    }
+
+    .proverbs .proverb-text {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 5rem;
+        border-bottom: 1px solid white;
+    }
+
+    .profile-container .profile-img-container {
+        width: 15rem;
+    }
+
+    .proverbs .container {
+        max-width: 70% !important;
+    }
+}
+
+@media (max-width: 1400px) {
+    .projects .project-container {
+        padding-inline: 4rem;
+    }
+}
+
+
+
+
